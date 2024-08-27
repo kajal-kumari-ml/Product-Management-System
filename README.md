@@ -65,7 +65,7 @@ The service will be available at `http://localhost:8080/api`.
 - **POST /api/products**  
   Add a new product.
 
-- **POST /api/products/{productId}**  
+- **PUT /api/products/{productId}**  
   Update an existing product.
 
 - **DELETE /api/products/{productId}**  
@@ -175,8 +175,8 @@ Content-Type: application/json
 {
   " firstName":"jdss",
   "LastName": "newuser",
-  "email":"test@gmail.com"
-  "password": "password123"
+  "email":"test@gmail.com",
+  "password": "password123",
    "role":"VENDOR"
 }
 ```
