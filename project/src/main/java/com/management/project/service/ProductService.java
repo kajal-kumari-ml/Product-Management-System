@@ -75,7 +75,7 @@ public class ProductService {
         return productRepository.save(existingProduct);
             
         } catch (Exception e) {
-            throw new BadRequest("Failed to update product: " + e.getMessage());
+            throw new BadRequest(e.getMessage());
         }
         
     }
