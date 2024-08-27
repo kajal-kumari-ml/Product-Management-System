@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +23,7 @@ import com.management.project.service.ProductService;
  * REST controller for managing product information.
  */
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api")
 public class ProductController {
 
     @Autowired
@@ -72,7 +74,7 @@ public class ProductController {
      * @return the added ProductInformation object
      * @throws BadRequest if the product details are invalid
      */
-    @PostMapping("/add")
+    @PostMapping("/products")
     public ResponseEntity<?> addProduct(@RequestBody @Validated ProductInformation request) {
         try {
             if (service.validateProduct(request)) {
@@ -94,8 +96,8 @@ public class ProductController {
      * @param productDetails the updated product details
      * @return the updated ProductInformation object
      */
-    @PostMapping("/update")
-    public ResponseEntity<?> updateProduct(@RequestParam String productId,
+    @PutMapping("/products/{productId}")
+    public ResponseEntity<?> updateProduct(@PathVariable String productId,
             @RequestBody ProductInformation productDetails) {
         try {
             ProductInformation productInformation = service.updateProduct(productId, productDetails);
@@ -112,8 +114,8 @@ public class ProductController {
      * @return a message indicating the result of the operation
      */
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteProduct(@RequestParam String productId) {
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable String productId) {
         try {
             service.deleteProduct(productId);
             return ResponseEntity.ok().body("Product deleted successfully");
