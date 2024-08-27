@@ -173,8 +173,11 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-  "username": "newuser",
+  " firstName":"jdss",
+  "LastName": "newuser",
+  "email":"test@gmail.com"
   "password": "password123"
+   "role":"VENDOR"
 }
 ```
 
@@ -194,7 +197,7 @@ Host: localhost:8080
 Content-Type: application/json
 
 {
-  "username": "newuser",
+  "username": "test@gmail.com",
   "password": "password123"
 }
 ```
